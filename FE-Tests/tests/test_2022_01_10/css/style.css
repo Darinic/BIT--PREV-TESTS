@@ -1,0 +1,104 @@
+body {
+  background: azure;
+  margin: 0;
+}
+div.container {
+  text-align: center;
+  width: 100%;
+}
+.columns {
+  margin-top: 90px;
+  padding: 0px 30px;
+}
+.column {
+  box-sizing: border-box;
+  float: left;
+  width: 25%;
+}
+.title h1 {
+  font-size: 45px;
+  color: rgb(221, 32, 18);
+  margin-bottom: 16px;
+  margin-top: 12px;
+}
+.icon {
+  text-align: center;
+  height: 230px;
+  width: 230px;
+  border-radius: 25px;
+  margin: auto;
+}
+.icon1 {
+  background: rgb(65, 164, 177);
+}
+.icon2 {
+  background: rgb(78, 76, 245);
+}
+.icon3 {
+  background: rgb(252, 165, 36);
+}
+.icon4 {
+  background: rgb(245, 236, 223);
+}
+.university {
+  width: 70%;
+}
+.apple {
+  width: 70%;
+}
+.sales {
+  width: 70%;
+}
+.campaign {
+  width: 70%;
+}
+.description {
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 30px;
+  padding: 0px 60px;
+  text-shadow: 0 0 1px;
+}
+.button {
+  background-color: cornsilk;
+  border: none;
+  border-radius: 25px;
+  font-family: fantasy;
+  padding: 10px 15px;
+}
+.tekstas {
+  font-size: 19px;
+  font-weight: bolder;
+  text-shadow: 0 0 1px;
+}
+.roundedNumber {
+  border: solid 3px black;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  background-color: #fff;
+  top: -15px;
+  left: -20px;
+}
+.column:first-child .roundedNumber {
+  border-color: rgb(65, 164, 177);
+  color: rgb(65, 165, 177);
+}
+.column:nth-child(2) .roundedNumber {
+  border-color: rgb(78, 76, 245);
+  color: rgb(78, 76, 245);
+}
+.column:nth-child(3) .roundedNumber {
+  border-color: rgb(252, 165, 36);
+  color: rgb(252, 165, 36);
+}
+.column:nth-child(4) .roundedNumber {
+  border-color: rgb(245, 236, 223);
+  color: rgb(245, 236, 223);
+}
+.roundedNumber p {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}

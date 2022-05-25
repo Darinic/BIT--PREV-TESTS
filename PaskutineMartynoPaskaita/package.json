@@ -1,0 +1,19 @@
+{
+  "name": "paskutinemartynopaskaita",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "laravel": "^0.0.1",
+    "laravel-mix": "^6.0.43",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.1.0"
+  }
+}
