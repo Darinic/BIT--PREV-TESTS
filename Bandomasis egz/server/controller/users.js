@@ -83,12 +83,9 @@ Router.post('/register', registerSchema,  async (req, res) => {
     }
 })
 
-Router.get('/logout', async (req,res) => {
+Router.get('/logout', (req,res) => {
     try{
-    res.clearCookie("token")
-
-//////////
-    // windows.location.reload()
+     res.clearCookie("token")
     } catch(error) {
         res.json({status: 'danger', message: 'Logout was unsucessfull'})
     }

@@ -34,7 +34,8 @@ export default (props) => {
                 setMessages({message: 'Login was successful', status: 'success'})
                 props.state(true, resp.data.message.role)
                 setTimeout(() => {
-                navigate('/')  
+                navigate('/')
+                window.location.reload()
                 }, 1500)
             } else {
                 setMessages({message: resp.data.message, status: resp.data.status})

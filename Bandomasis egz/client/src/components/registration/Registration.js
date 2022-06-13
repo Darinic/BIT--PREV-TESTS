@@ -42,7 +42,7 @@ export default () => {
             setMessages({message: resp.data.message, status: resp.data.status})
             if(resp.data.status === 'success') {
                 setTimeout(() => {
-                navigate('/create-profile')  
+                navigate('/login')  
                 }, 3000)
             }
         })

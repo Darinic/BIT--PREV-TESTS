@@ -1,8 +1,8 @@
-import "./clientArea.css";
+import "./homepage.css";
 import logo from "../../assets/img/GoFundMe.jpg";
 import logo2 from "../../assets/img/Help.jpg"
 
-export default () => {
+export default (props) => {
   return (
     <div className="container">
       <div className="intro-row row clearfix">
@@ -41,11 +41,20 @@ export default () => {
                 raise over $5 billion—and we are just getting started.
               </p>
             </div>
+            {!props.isLoggedIn && (
             <div className="intro-buttons">
               <a href="/registration" className="ui button primary">
                 Sign-Up!
               </a>
             </div>
+            )}
+            {props.isLoggedIn && (
+              <div className="intro-buttons">
+                <a href="/createCrowdFounding" className="ui button primary">
+                  Create a Fund Raiser!
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

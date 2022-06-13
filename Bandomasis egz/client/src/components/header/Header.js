@@ -8,14 +8,15 @@ import "./Header.css";
 export default (props) => {
 
   const navigate =useNavigate()
+
   const onLogout = () => {
     axios.get('/api/users/logout')
     .then(resp => {
-      console.log(resp)
       if(!resp.data.id) {
-        props.setLogin(false)
+        props.setLoggedIn(false)
         navigate('/')
-      }
+        // window.location.reload()
+      } 
     })
   }
 //     try{
@@ -41,8 +42,8 @@ export default (props) => {
         <Link className="item" to="/howitworks">
           How it works
         </Link>
-        <Link className="item" to="/projects">
-          Current/Past projects
+        <Link className="item" to="/fundraisers">
+          Current/Past Fundraisers
         </Link>
         <div className="right menu">
           {props.loggedIn === false && (
@@ -53,6 +54,11 @@ export default (props) => {
           {props.loggedIn === false && (
             <Link className="item" to="/login">
               Log-In
+            </Link>
+          )}
+          {props.loggedIn === true && props.userRole === 0 && (
+            <Link className="item" to="/myCrowdfunders">
+              Your Fundraisers
             </Link>
           )}
           {props.loggedIn === true && props.userRole === 0 && (
@@ -67,9 +73,14 @@ export default (props) => {
             </Link>
           )}
           {props.loggedIn === true && (
-            <button onClick={onLogout} style={{border:'none'}} className="item" to="/logout">
+            <button onClick={onLogout} style={{border:'none'}} className="item" to="/">
               Logout
             </button>
+          )}
+          {props.email && (
+            <div className="item">
+              User: {props.email}
+            </div>
           )}
         </div>
       </div>

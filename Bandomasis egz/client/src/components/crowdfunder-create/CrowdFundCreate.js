@@ -15,17 +15,18 @@ export default CrowdFunderCreate => {
 
     const [cfForm, setcfForm] = useState({
         headline:'',
-        cf_image:'',
+        // cf_image:'',
         description:'',
         cf_goal:'1000',
         approved:0,
         success:0
     })
+    
     const [messages, setMessages] = useState({message: '', status: ''})
 
     const handleInputChange = (e) => {
         setcfForm({
-            ...setcfForm, [e.target.name]:e.target.value
+            ...cfForm, [e.target.name]:e.target.value
         })
     }
 
@@ -79,17 +80,18 @@ export default CrowdFunderCreate => {
             <label className="form-label">Headline</label>
             <input type="text" name="headline" className="form-control" placeholder="Enter your Headline" value={cfForm.headline} onChange={handleInputChange} />
         </div>
-        <div className="field mb-3">
+        {/* <div className="field mb-3">
             <label className="form-label">Crowdfunding Image</label>
-            <input type="file" name="subheadline" className="form-control" placeholder="upload your image" value={cfForm.cf_image} onChange={handleInputChange}/>
-        </div>
+            <input type="file" name="cf_image" className="form-control" placeholder="upload your image" value={cfForm.cf_image} onChange={(e) => setcfForm({
+            ...cfForm, [e.target.name]:e.target.files[0] }) } />
+        </div> */}
         <div className="field mb-3">
             <label className="form-label">Description</label>
             <textarea className="form-control" rows="3" name="description" value={cfForm.description} onChange={handleInputChange}></textarea>
         </div>
         <div className="field mb-3">
             <label className="form-label">Crowdfunding goal(in dollars $) </label>
-            <input type="number" name="hourly_rate" className="form-control" value={cfForm.cf_goal} min="0" onChange={handleInputChange}/>
+            <input type="number" name="cf_goal" className="form-control" value={cfForm.cf_goal} min="0" onChange={handleInputChange}/>
         </div>
 
         <Button type='submit' variant='primary'>Create a crowdfunder</Button>

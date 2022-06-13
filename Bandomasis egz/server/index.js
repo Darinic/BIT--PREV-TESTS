@@ -16,7 +16,7 @@ app.use( express.urlencoded({
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api/users', users)
-app.use('/api/crowdfund', crowdfunder)
+app.use('/api/crowdfunder', crowdfunder)
 
 app.get('/checkAuth', auth, async (req, res) => {
   const userData = await getUser(req.authData.id)

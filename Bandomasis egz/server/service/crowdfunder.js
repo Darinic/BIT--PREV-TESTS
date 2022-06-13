@@ -11,7 +11,7 @@ export const getAll = async (conditions = {}) => {
 
 export const getById = async (id) => {
     try{
-        return await database.CrowdFunder.findByPk(id, {raw: true})
+        return await database.CrowdFunder.findByPk(id)
     }
     catch {
         return false
@@ -20,11 +20,11 @@ export const getById = async (id) => {
 
 export const getByUserId = async (id) => {
     try{
-        return await database.CrowdFunder.findOne({
+        return await database.CrowdFunder.findAll({
             where: {
                 UserId: id
             }
-        }, {raw:true})
+        })
     }catch {
         return false
     }
@@ -56,8 +56,8 @@ export const exists = async (fields = {}) => {
 
 export const _delete = async (id) => {
     try {
-        const crowdfunder = await getById(id)
-        await crowdfunder.destroy()
+        const CrowdFunder = await getById(id)
+        await CrowdFunder.destroy()
     } catch(e) {
         console.log(e)
         return false
