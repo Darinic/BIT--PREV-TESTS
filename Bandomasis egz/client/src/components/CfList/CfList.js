@@ -21,7 +21,6 @@ export default () => {
       })
       .catch(() => {
         setIsLoading(false);
-        setMessages({message: 'Server error', status: 'danger'})
       });
   }, []);
 
@@ -34,6 +33,7 @@ export default () => {
             key={index}
             setMessages={setMessages}
             crowdfunder={value}
+            link='/crowdfunder/'
           />
         );
       }
@@ -41,18 +41,22 @@ export default () => {
   };
 
   const ListPast = () => {
+    if(crowdFund){
     return crowdFund.map((value, index) => {
-      // console.log(value)
       if (value.approved === 1 && value.success === 1) {
         return (
           <CfListBox
             key={index}
             setMessages={setMessages}
             crowdfunder={value}
+            link='/crowdfunder/'
           />
         );
       }
-    });
+    })
+  } else {
+    return <h1>Currently there are active fundraisers</h1>
+  };
   };
 
   const ListContainer = () => {
@@ -71,7 +75,7 @@ export default () => {
   };
 
   return (
-    <Container style={{}}>
+    <Container>
       <h1 className="h1header">Current and previous Crowdfunders</h1>
       {isLoading ? (
         "Loading...."

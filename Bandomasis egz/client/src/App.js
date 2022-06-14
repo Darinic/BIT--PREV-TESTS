@@ -51,7 +51,7 @@ const handleLoginState = (loggedIn, role) => {
           <Route path="/createCrowdFounding" element={<CrowdFundCreate />} />
           <Route path="/fundraisers" element={<CFlist />} />
           <Route path="/mycrowdfunders" element={<MyFundraisers UserId={UserId}/>} />
-          <Route path="/crowdfunder/:id" element={<CrowdFundEdit />} />
+          <Route path="/mycrowdfunder/:id" element={<CrowdFundEdit />} />
         </Routes>
       </Router>
     </div>

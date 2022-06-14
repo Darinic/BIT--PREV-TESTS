@@ -13,7 +13,6 @@ export default CrowdFundEdit => {
     const { id } = useParams()
     const navigate = useNavigate()
 
-    const [isEmpty, setIsEmpty] = useState(false)
     const [cfForm, setcfForm] = useState({})
     const [isLoading, setIsLoading] = useState(true);
     const [messages, setMessages] = useState({message: '', status: ''})
@@ -28,8 +27,9 @@ export default CrowdFundEdit => {
             if (resp.data.status === "success") {
               setcfForm(resp.data.message);
             }else {
-                setIsEmpty(true)
+                navigate('/mycrowdfunders')  
             }
+
           })
           .catch(() => {
             setIsLoading(false);
@@ -99,8 +99,13 @@ export default CrowdFundEdit => {
 
 
     return(
+
         <Container>
+                 {isLoading ? (
+        "Loading...."
+      ) : (
         <div className="crowdFundEdit">
+   
         {messages.message && (
                 <Alert variation={messages.status}>{messages.message}</Alert>
             )}
@@ -133,6 +138,7 @@ export default CrowdFundEdit => {
         <Button type='submit' variant='primary'>Update a crowdfunder</Button>
         </form>
     </div>
+      )}
     </Container>
     )
 }

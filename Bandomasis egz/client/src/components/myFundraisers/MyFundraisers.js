@@ -36,7 +36,7 @@ export default (props) => {
                 key={index}
                 setMessages={setMessages}
                 crowdfunder={value}
-                link='/crowdfunder/'
+                link='/mycrowdfunder/'
               />
             );
           }
