@@ -51,7 +51,7 @@ export default (props) => {
             {props.isLoggedIn && (
               <div className="intro-buttons">
                 <a href="/createCrowdFounding" className="ui button primary">
-                  Create a Fund Raiser!
+                  Create a Fundraiser!
                 </a>
               </div>
             )}

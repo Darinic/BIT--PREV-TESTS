@@ -3,7 +3,8 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import CfListBox from "../CfListBox/CfListBox";
 import Alert  from 'react-bootstrap/Alert';
-import './MyFundraisers.css'
+import './MyFundraisers.css';
+
 
 export default (props) => {
     const [crowdFund, setCrowdFund] = useState([]);
@@ -35,6 +36,7 @@ export default (props) => {
                 key={index}
                 setMessages={setMessages}
                 crowdfunder={value}
+                link='/crowdfunder/'
               />
             );
           }

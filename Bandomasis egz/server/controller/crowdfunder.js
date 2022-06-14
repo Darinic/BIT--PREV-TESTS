@@ -169,18 +169,15 @@ Router.post("/create", auth, async (req, res) => {
 //   }
 // });
 
-// // Router.get("/single/:id", async (req, res) => {
-// //   const id = req.params.id;
-// //   let entries = await getById(id);
-// //   if (entries) {
-// //     const portfolio = await portfolioItems(entries.id);
-
-// //     if (portfolio) entries.portfolio = portfolio;
-// //     res.json({ status: "success", message: entries });
-// //   } else {
-// //     res.json({ status: "danger", message: "Nepavyko surasti profilio" });
-// //   }
-// // });
+Router.get("/single/:id", async (req, res) => {
+  const id = req.params.id;
+  let entries = await getById(id);
+  if (entries) {
+    res.json({ status: "success", message: entries });
+  } else {
+    res.json({ status: "danger", message: "Nepavyko surasti profilio" });
+  }
+});
 
 
 // // const crowfunderFields = upload.fields([
@@ -211,7 +208,7 @@ Router.put("/update/:id", async (req, res) => {
 
   try {
     await _update(id, crowdfunder);
-    res.json({ status: "success", message: "crowdfunder was accepted" });
+    res.json({ status: "success", message: "crowdfunder was updated" });
   } catch {
     res.json({ status: "danger", message: "crowdfunder was not renewed" });
   }

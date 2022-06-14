@@ -12,6 +12,7 @@ import HowItWorks from "./components/howitworks/HowItWorks.js";
 import CrowdFundCreate from "./components/crowdfunder-create/CrowdFundCreate.js";
 import CFlist from "./components/CfList/CfList.js";
 import MyFundraisers from "./components/myFundraisers/MyFundraisers";
+import CrowdFundEdit from "./components/crowdfunder-edit/CrowdFundEdit";
 
 export default () => {
 const [isLoggedIn, setIsloggedIn] = useState(false);
@@ -50,6 +51,7 @@ const handleLoginState = (loggedIn, role) => {
           <Route path="/createCrowdFounding" element={<CrowdFundCreate />} />
           <Route path="/fundraisers" element={<CFlist />} />
           <Route path="/mycrowdfunders" element={<MyFundraisers UserId={UserId}/>} />
+          <Route path="/crowdfunder/:id" element={<CrowdFundEdit />} />
         </Routes>
       </Router>
     </div>

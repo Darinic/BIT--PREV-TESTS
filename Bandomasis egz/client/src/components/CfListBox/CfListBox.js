@@ -18,7 +18,7 @@ export default (props) => {
     return (
         <div className="col-sm-4 col-md-offset-1">
             <div className="card shadow-sm">
-                <Link to={'/crowdfunder/' + props.crowdfunder.id}>
+                <Link to={`${props.link}` + props.crowdfunder.id}>
 
                 <div className="card-body">
              {/* NEED TO ADD PICTURE */}
