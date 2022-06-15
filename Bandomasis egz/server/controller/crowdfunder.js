@@ -86,20 +86,6 @@ Router.get('/user/:UserId', async (req,res) => {
 })
 
 Router.post("/create", auth, async (req, res) => {
-  console.log(req.files)
-  if (
-    await exists({
-      UserId: req.body.UserId,
-    })
-  ) {
-    res.json({
-      status: "danger",
-      message: "Crowdfunding was already created for this account",
-    });
-    return;
-  }
-
-
   if(await insert(req.body)) {
     res.json({status: 'success', message: 'Fund raiser was created'})
 } else {
