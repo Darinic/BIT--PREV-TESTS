@@ -13,6 +13,7 @@ import CrowdFundCreate from "./components/crowdfunder-create/CrowdFundCreate.js"
 import CFlist from "./components/CfList/CfList.js";
 import MyFundraisers from "./components/myFundraisers/MyFundraisers";
 import CrowdFundEdit from "./components/crowdfunder-edit/CrowdFundEdit";
+import Fundraiser from "./components/fundraiser/Fundraiser";
 
 export default () => {
 const [isLoggedIn, setIsloggedIn] = useState(false);
@@ -52,6 +53,7 @@ const handleLoginState = (loggedIn, role) => {
           <Route path="/fundraisers" element={<CFlist />} />
           <Route path="/mycrowdfunders" element={<MyFundraisers UserId={UserId}/>} />
           <Route path="/mycrowdfunder/:id" element={<CrowdFundEdit />} />
+          <Route path="/crowdfunder/:id" element={<Fundraiser />} />
         </Routes>
       </Router>
     </div>
