@@ -15,7 +15,8 @@ import validator from "../middleware/validator.js";
 import multer from "multer";
 import { access, mkdir } from "fs/promises";
 import { Op } from "sequelize";
-import auth from '../middleware/authentication.js'
+import auth from '../middleware/authentication.js';
+import { getAll as crowdfunderComments } from "../service/donations.js";
 
 const Router = express.Router();
 
@@ -63,6 +64,17 @@ const crowdfunderSchema = (req, res, next) => {
 // Router.post('/upload_photo', upload.single('photo'), async(req, res) => {
 //  console.log(req.file)
 // })
+
+Router.get("/comments/:id", async (req, res) => {
+  const id = req.params.id;
+  let entries = await getById(id);
+  if (entries) {
+    const comments = await crowdfunderComments(entries.id);
+    res.json({ status: "success", message: comments });
+  } else {
+    res.json({ status: "danger", message: "Nepavyko surasti profilio" });
+  }
+});
 
 Router.get('/', async (req, res) => {
   const crowdfunder = await getAll()

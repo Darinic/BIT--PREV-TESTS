@@ -24,6 +24,8 @@ export default () => {
       });
   }, []);
 
+  
+
   const ListActual = () => {
     return crowdFund.map((value, index) => {
       // console.log(value)
