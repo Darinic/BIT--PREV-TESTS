@@ -2,6 +2,7 @@ import { database } from "../database/connection.js";
 
 export const getAll = async (conditions = {}) => {
     try{
+        conditions.raw = true
         return await database.CrowdFunder.findAll(conditions)
     }
     catch {

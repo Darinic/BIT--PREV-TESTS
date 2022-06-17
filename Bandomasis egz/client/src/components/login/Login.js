@@ -32,7 +32,7 @@ export default (props) => {
         .then(resp => {
             if(resp.data.status === 'success') {
                 setMessages({message: 'Login was successful', status: 'success'})
-                props.state(true, resp.data.message.role)
+                props.state(true, resp.data.message.role, resp.data.message.email, resp.data.message.UserId)
                 setTimeout(() => {
                 navigate('/')
                 window.location.reload()

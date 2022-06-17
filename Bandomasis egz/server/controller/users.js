@@ -58,10 +58,11 @@ Router.post('/login', loginSchema, async(req, res) => {
     const token= jsonwebtoken.sign(data, config.secret, {
         expiresIn: '1h'
     })
-    res.cookie('token', token)
+    res.cookie('token', token, {path: '/'})
     res.json({message: {
         UserId: user.id,
-        role: user.role
+        role: user.role,
+        email: req.body.email
     }, status: 'success'})
 })
 
@@ -84,10 +85,6 @@ Router.post('/register', registerSchema,  async (req, res) => {
 })
 
 Router.get('/logout', (req,res) => {
-    try{
-     res.clearCookie("token")
-    } catch(error) {
-        res.json({status: 'danger', message: 'Logout was unsucessfull'})
-    }
+     res.clearCookie("token", {path: '/'}).end()
 })
 export default Router

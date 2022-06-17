@@ -11,21 +11,15 @@ export default (props) => {
 
   const onLogout = () => {
     axios.get('/api/users/logout')
-    .then(resp => {
-      if(!resp.data.id) {
-        props.setLoggedIn(false)
+    .then(() => {
+        props.handleLoginState(false)
         navigate('/')
-        // window.location.reload()
-      } 
+    })
+    .catch((e) => {
+      console.log('Server is offline')
     })
   }
-//     try{
-//     axios.get('/api/users/logout')
-//       props.isLoggedIn = false
-//     } catch{
-//       props.isLoggedIn = true
-//     }
-// }
+
 
   return (
     <div className="header">

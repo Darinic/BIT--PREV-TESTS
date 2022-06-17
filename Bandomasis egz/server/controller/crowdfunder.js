@@ -79,7 +79,10 @@ Router.get("/comments/:id", async (req, res) => {
 Router.get('/', async (req, res) => {
   const crowdfunder = await getAll()
 
-  if (crowdfunder) {
+  if(crowdfunder) {
+    for(let i =0; i< crowdfunder.length; i++) {
+    crowdfunder[i].donations = await crowdfunderComments(crowdfunder[i].id)
+  }
       res.json({ message: crowdfunder, status: 'success' })
   } else {
       res.json({ message: 'an Error has occured', status: 'danger' })

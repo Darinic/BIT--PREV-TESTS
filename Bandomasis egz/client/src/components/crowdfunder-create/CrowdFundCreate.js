@@ -9,8 +9,9 @@ import './crowdfundcreate.css'
 // const UserId = 3 //Statinsi userio ID kuri veliau keisime
 
 
-export default CrowdFunderCreate => {
+export default props => {
 
+    const UserId = props.UserId;
     const navigate = useNavigate()
 
     const [cfForm, setcfForm] = useState({
@@ -19,7 +20,8 @@ export default CrowdFunderCreate => {
         description:'',
         cf_goal:'1000',
         approved:0,
-        success:0
+        success:0,
+        UserId:UserId
     })
     
     const [messages, setMessages] = useState({message: '', status: ''})

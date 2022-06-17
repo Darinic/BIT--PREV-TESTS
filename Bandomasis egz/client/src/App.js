@@ -34,22 +34,25 @@ useEffect(() => {
   })
 }, [])
 
-const handleLoginState = (loggedIn, role) => {
+const handleLoginState = (loggedIn, role = false, email = false, UserId = false) => {
   setIsloggedIn(loggedIn)
   setUserRole(role)
+  setEmail(email)
+  setUserId(UserId)
 }
+
 
   return (
     <div className="App">
       <Router>
-        <Header loggedIn={isLoggedIn} userRole={userRole} setLogin={setIsloggedIn} email={email}/>
+        <Header loggedIn={isLoggedIn} userRole={userRole} email={email} handleLoginState={handleLoginState}/>
         <Routes>
         {!isLoggedIn && (<Route path="/registration" element={<Registration />} />)}
           {!isLoggedIn && (<Route path="/login" element={<Login state={handleLoginState} />} />)}
           {userRole === 1 && (<Route path="/admin" element={<AdminArea />} /> )}
           <Route path="/" element={<Homepage isLoggedIn={isLoggedIn} />} />
           <Route path="/howitworks" element={<HowItWorks />} />
-          <Route path="/createCrowdFounding" element={<CrowdFundCreate />} />
+          <Route path="/createCrowdFounding" element={<CrowdFundCreate UserId={UserId}/>} />
           <Route path="/fundraisers" element={<CFlist />} />
           <Route path="/mycrowdfunders" element={<MyFundraisers UserId={UserId}/>} />
           <Route path="/mycrowdfunder/:id" element={<CrowdFundEdit />} />

@@ -87,7 +87,7 @@ export default (props) => {
               <p className="crowdfundDescription">{crowdFund.description}</p>
             </div>
           </div>
-          <DonationForm/>
+          <DonationForm id={id}/>
           <div className="comments">
             <h2 className="ui dividing header"> Check who already donated!</h2>
             {donations.length == 0 ? (

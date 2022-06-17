@@ -5,7 +5,7 @@ const config = await loadJsonFile('./config.json')
 
 export default async (req, res, next) => {
 if(!req.cookies?.token) {
-    res.json({message: 'User not found', status: 'danger'})
+    res.json({message: 'User not connected', status: 'danger'})
     return
 }
 

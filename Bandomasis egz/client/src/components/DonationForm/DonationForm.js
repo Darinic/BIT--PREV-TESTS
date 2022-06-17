@@ -4,12 +4,13 @@ import "./DonationForm.css";
 import Button from "react-bootstrap/Button";
 import Alert from 'react-bootstrap/Alert';
 
-export default () => {
+export default (props) => {
 
   const [donation, setDonation] = useState({
     name: "",
     comment: "",
     donation: 5,
+    CrowdFunderId: props.id
   });
 
   const [donationMessage, setDonationMessage]= useState({ message: "", status: "" });
