@@ -1,6 +1,6 @@
 import "./homepage.css";
 import logo from "../../assets/img/GoFundMe.jpg";
-import logo2 from "../../assets/img/Help.jpg"
+import logo2 from "../../assets/img/Help.jpg";
 
 export default (props) => {
   return (
@@ -42,11 +42,11 @@ export default (props) => {
               </p>
             </div>
             {!props.isLoggedIn && (
-            <div className="intro-buttons">
-              <a href="/registration" className="ui button primary">
-                Sign-Up!
-              </a>
-            </div>
+              <div className="intro-buttons">
+                <a href="/registration" className="ui button primary">
+                  Sign-Up!
+                </a>
+              </div>
             )}
             {props.isLoggedIn && (
               <div className="intro-buttons">

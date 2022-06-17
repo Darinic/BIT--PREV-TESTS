@@ -32,3 +32,9 @@
     margin-bottom: 0;
     color: black
 }
+
+.cf_image {
+    width: auto;
+    max-width: 300px;
+    margin-bottom: 1rem;
+}

@@ -27,7 +27,7 @@ try {
   database.CrowdFunder = crowdFunder(sequelize);
   database.Donations = donations(sequelize);
 
-  await sequelize.sync({ alter: true });
+  await sequelize.sync({ alter: false });
 } catch {
   console.log("Unssuccesful attempt to reach Database");
 }

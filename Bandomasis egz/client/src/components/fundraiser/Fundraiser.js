@@ -62,7 +62,6 @@ export default (props) => {
     return total;
   };
 
-
   return (
     <Container>
       {messages.message && (
@@ -87,13 +86,19 @@ export default (props) => {
               <p className="crowdfundDescription">{crowdFund.description}</p>
             </div>
           </div>
-          <DonationForm id={id}/>
+          {!props.loggedIn ? (
+            <h3 className="LogInToDonate">To donate please Log-In</h3>
+          ) : (
+            <DonationForm id={id} />
+          )}
           <div className="comments">
             <h2 className="ui dividing header"> Check who already donated!</h2>
             {donations.length == 0 ? (
-                <h4 style={{color:'blue', paddingBottom:'2rem'}}>Nobody has donated yet, be the first one!</h4>
-            ): (
-            <DonationList />
+              <h4 style={{ color: "blue", paddingBottom: "2rem" }}>
+                Nobody has donated yet, be the first one!
+              </h4>
+            ) : (
+              <DonationList />
             )}
           </div>
         </>

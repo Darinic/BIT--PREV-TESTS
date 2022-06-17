@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import "./Progress_Bar.css";
 
 const ProgressBar = ({ value, max }) => {
-  
   return (
-      <>
-    <progress className="progress" value={value} max={max}>
+    <>
+      <progress className="progress" value={value} max={max}>
         <span>{(value / max) * 100}%</span>
-    </progress>
-    <span>{((value / max) * 100).toFixed(0)}%</span>
+      </progress>
+      <span>{((value / max) * 100).toFixed(0)}%</span>
     </>
   );
 };

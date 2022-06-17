@@ -24,18 +24,15 @@ export default () => {
       });
   }, []);
 
-  
-
   const ListActual = () => {
     return crowdFund.map((value, index) => {
-      // console.log(value)
       if (value.approved === 1 && value.success === 0) {
         return (
           <CfListBox
             key={index}
             setMessages={setMessages}
             crowdfunder={value}
-            link='/crowdfunder/'
+            link="/crowdfunder/"
           />
         );
       }
@@ -43,22 +40,20 @@ export default () => {
   };
 
   const ListPast = () => {
-    if(crowdFund){
-    return crowdFund.map((value, index) => {
-      if (value.approved === 1 && value.success === 1) {
-        return (
-          <CfListBox
-            key={index}
-            setMessages={setMessages}
-            crowdfunder={value}
-            link='/crowdfunder/'
-          />
-        );
-      }
-    })
-  } else {
-    return <h1>Currently there are active fundraisers</h1>
-  };
+    if (crowdFund) {
+      return crowdFund.map((value, index) => {
+        if (value.approved === 1 && value.success === 1) {
+          return (
+            <CfListBox
+              key={index}
+              setMessages={setMessages}
+              crowdfunder={value}
+              link="/crowdfunder/"
+            />
+          );
+        }
+      });
+    }
   };
 
   const ListContainer = () => {

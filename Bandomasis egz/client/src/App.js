@@ -16,47 +16,74 @@ import CrowdFundEdit from "./components/crowdfunder-edit/CrowdFundEdit";
 import Fundraiser from "./components/fundraiser/Fundraiser";
 
 export default () => {
-const [isLoggedIn, setIsloggedIn] = useState(false);
-const [userRole, setUserRole] = useState(0);
-const [email, setEmail] =useState('')
-const [UserId, setUserId] = useState(0)
+  const [isLoggedIn, setIsloggedIn] = useState(false);
+  const [userRole, setUserRole] = useState(0);
+  const [email, setEmail] = useState("");
+  const [UserId, setUserId] = useState(0);
 
-useEffect(() => {
-  axios.get('/checkAuth', { withCredentials: true})
-  .then(resp => {
-    console.log(resp)
-    if(resp.data.id) {
-      setIsloggedIn(true)
-      setUserRole(resp.data.role)
-      setEmail(resp.data.email)
-      setUserId(resp.data.id)
-    }
-  })
-}, [])
+  useEffect(() => {
+    axios.get("/checkAuth", { withCredentials: true }).then((resp) => {
+      console.log(resp);
+      if (resp.data.id) {
+        setIsloggedIn(true);
+        setUserRole(resp.data.role);
+        setEmail(resp.data.email);
+        setUserId(resp.data.id);
+      }
+    });
+  }, []);
 
-const handleLoginState = (loggedIn, role = false, email = false, UserId = false) => {
-  setIsloggedIn(loggedIn)
-  setUserRole(role)
-  setEmail(email)
-  setUserId(UserId)
-}
-
+  const handleLoginState = (
+    loggedIn,
+    role = false,
+    email = false,
+    UserId = false
+  ) => {
+    setIsloggedIn(loggedIn);
+    setUserRole(role);
+    setEmail(email);
+    setUserId(UserId);
+  };
 
   return (
     <div className="App">
       <Router>
-        <Header loggedIn={isLoggedIn} userRole={userRole} email={email} handleLoginState={handleLoginState}/>
+        <Header
+          loggedIn={isLoggedIn}
+          userRole={userRole}
+          email={email}
+          handleLoginState={handleLoginState}
+        />
         <Routes>
-        {!isLoggedIn && (<Route path="/registration" element={<Registration />} />)}
-          {!isLoggedIn && (<Route path="/login" element={<Login state={handleLoginState} />} />)}
-          {userRole === 1 && (<Route path="/admin" element={<AdminArea />} /> )}
+          {!isLoggedIn && (
+            <Route path="/registration" element={<Registration />} />
+          )}
+          {!isLoggedIn && (
+            <Route path="/login" element={<Login state={handleLoginState} />} />
+          )}
+          {userRole === 1 && <Route path="/admin" element={<AdminArea />} />}
           <Route path="/" element={<Homepage isLoggedIn={isLoggedIn} />} />
           <Route path="/howitworks" element={<HowItWorks />} />
-          <Route path="/createCrowdFounding" element={<CrowdFundCreate UserId={UserId}/>} />
+          {isLoggedIn && (
+            <Route
+              path="/createCrowdFounding"
+              element={<CrowdFundCreate UserId={UserId} />}
+            />
+          )}
           <Route path="/fundraisers" element={<CFlist />} />
-          <Route path="/mycrowdfunders" element={<MyFundraisers UserId={UserId}/>} />
-          <Route path="/mycrowdfunder/:id" element={<CrowdFundEdit />} />
-          <Route path="/crowdfunder/:id" element={<Fundraiser />} />
+          {isLoggedIn && (
+            <Route
+              path="/mycrowdfunders"
+              element={<MyFundraisers UserId={UserId} />}
+            />
+          )}
+          {isLoggedIn && (
+            <Route path="/mycrowdfunder/:id" element={<CrowdFundEdit />} />
+          )}
+          <Route
+            path="/crowdfunder/:id"
+            element={<Fundraiser loggedIn={isLoggedIn} />}
+          />
         </Routes>
       </Router>
     </div>

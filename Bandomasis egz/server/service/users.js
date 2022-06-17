@@ -1,13 +1,12 @@
 import { database } from "../database/connection.js";
 
-
 export const getAllUsers = async () => {
   try {
-    return await database.Users.findAll()
-  }catch {
-    return false
+    return await database.Users.findAll();
+  } catch {
+    return false;
   }
-}
+};
 
 export const getUser = async (id) => {
   try {
@@ -32,14 +31,13 @@ export const exists = async (fields = {}) => {
 export const getUserByEmail = async (email) => {
   try {
     return await database.Users.findOne({
-      where: { email
-      }, 
-      raw: true
-    })
+      where: { email },
+      raw: true,
+    });
   } catch {
-    return false
+    return false;
   }
-}
+};
 
 export const insert = async (data) => {
   try {

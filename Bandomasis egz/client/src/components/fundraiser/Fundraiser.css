@@ -37,3 +37,12 @@ margin-bottom: 1rem;
     margin: auto;
     margin-bottom: 2rem;
 }
+
+.LogInToDonate {
+    background-color: red;
+    color: white;
+    max-width: 30%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

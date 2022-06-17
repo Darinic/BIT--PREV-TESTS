@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import CfBox from "../CF-admin-box/CF-admin-box";
-import Alert  from 'react-bootstrap/Alert'
+import Alert from "react-bootstrap/Alert";
 
 export default () => {
   const [crowdFund, setCrowdFund] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [messages, setMessages] = useState({message: '', status: ''})
+  const [messages, setMessages] = useState({ message: "", status: "" });
 
   useEffect(() => {
     axios
@@ -27,11 +27,13 @@ export default () => {
 
   const List = () => {
     return crowdFund.map((value, index) => {
-        // console.log(value)
-        if(value.approved === 0) {
-            return <CfBox key={index} setMessages={setMessages} crowdfunder={value} />
-        }
-  });
+      // console.log(value)
+      if (value.approved === 0) {
+        return (
+          <CfBox key={index} setMessages={setMessages} crowdfunder={value} />
+        );
+      }
+    });
   };
 
   const ListContainer = () => {
@@ -42,18 +44,19 @@ export default () => {
     );
   };
 
-
   return (
     <Container>
       <h1>Admin Panel</h1>
-      {isLoading ? "Loading..." : (
+      {isLoading ? (
+        "Loading..."
+      ) : (
         <>
-        {messages.message && (
-                <Alert variation={messages.status}>{messages.message}</Alert>
-            )}
-      <ListContainer />
-      </>
-    )}
+          {messages.message && (
+            <Alert variation={messages.status}>{messages.message}</Alert>
+          )}
+          <ListContainer />
+        </>
+      )}
     </Container>
   );
 };
